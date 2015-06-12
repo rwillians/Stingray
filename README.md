@@ -1,11 +1,9 @@
 Stingray
 ======
-
 Dot notation reader/writer for multidimensional arrays in PHP.
 
 Installing via Composer
 -----------------------
-
 Add Stingray to your project:
 
 ```bash
@@ -30,7 +28,6 @@ $>  composer.phar update
 
 Example Usage
 -----------------------
-
 To get any node from an array:
 
 ```php
@@ -48,6 +45,10 @@ echo Stingray::get($someArray, 'client.name'); // Outputs: 'John Doe'
 // Changing a value using dot notation:
 Stingray::set($someArray, 'client.name', 'Jane Doe');
 
-// Create a new key-value to an existent array using dot notation:
+/*
+ * Create a new key-value to an existent array using dot notation:
+ * (Notice to add the "true" flag otherwise it will throw an exception 
+ * claiming that the required path doesn't exists.)
+ */
 Stingray::set($someArray, 'client.address', 'Some Street, 123', true);
 ```
