@@ -1,6 +1,6 @@
 {
     "name": "rwillians/stingray",
-    "description": "Dot notation accessor for PHP multidimensional arrays",
+    "description": "Dot notation accessor for multidimensional arrays in PHP",
     "license": "MIT",
     "authors": [
         {
