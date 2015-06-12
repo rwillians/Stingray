@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the Stingray package.
  *
@@ -9,29 +8,23 @@
  * file that was distributed with this source code.
  */
 
-namespace projectmeta\Stingray\Exception;
+namespace Rwillians\Stingray\Exception;
+
 
 /**
  * ArrayNodeNotFoundException
- *
  * Error thrown when unable to find an array key
- * 
  * @author Matthew Ratzke <matthew.003@me.com>
  */
 class ArrayNodeNotFoundException extends \InvalidArgumentException
 {
-    
     /**
      * Constructor.
-     * 
-     * @param $node Failed array node
-     * @param $string Dot delimited string used to search array
+     * @param string $node Failed array node
+     * @param string $string Dot delimited string used to search array
      */
-    public function __construct($node, $string) {
-        
+    public function __construct($node, $string)
+    {
         parent::__construct(sprintf('The array node "%s" was not found while using "%s" to search', $node, $string));
-        
     }
-
-
 }
