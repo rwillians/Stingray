@@ -1,6 +1,6 @@
 {
     "name": "rwillians/stingray",
-    "description": "Dot notation accessor for multidimensional arrays in PHP",
+    "description": "Dot notation accessor for multidimensional arrays in PHP.",
     "license": "MIT",
     "authors": [
         {
@@ -17,9 +17,12 @@
             "Rwillians\\Stingray\\": "src/"
         }
     },
+    "require": {
+        "php": ">=5.3.3"
+    },
     "require-dev": {
-        "symfony/validator": "2.5.*",
-        "behat/behat": "2.4.*@stable"
+        "symfony/validator": "^2.7",
+        "behat/behat": "^2.5"
     },
     "minimum-stability": "stable"
 }
