@@ -1,10 +1,12 @@
 {
     "name": "rwillians/stingray",
-    "description": "Dot notation accessor for multidimensional arrays in PHP.",
+    "description": "Dot notation reader/writer for multidimensional arrays in PHP.",
     "keys": [
-        "accessor",
         "dot",
         "notation",
+        "accessor",
+        "reader",
+        "writer",
         "array"
     ],
     "license": "MIT",
