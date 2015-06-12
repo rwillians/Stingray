@@ -1,11 +1,15 @@
 {
     "name": "rwillians/stingray",
-    "description": "Stingray - Access array elements via dot notation",
+    "description": "Dot notation accessor for PHP multidimensional arrays",
     "license": "MIT",
     "authors": [
         {
             "name": "Matthew Ratzke",
             "email": "matthew.003@me.com"
+        },
+        {
+            "name": "Rafael Willians",
+            "email": "me@rwillians.com"
         }
     ],
     "autoload": {
