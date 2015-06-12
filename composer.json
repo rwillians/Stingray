@@ -1,5 +1,5 @@
 {
-    "name": "projectmeta/stingray",
+    "name": "rwillians/stingray",
     "description": "Stingray - Access array elements via dot notation",
     "license": "MIT",
     "authors": [
@@ -8,15 +8,14 @@
             "email": "matthew.003@me.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-
-    },
-        "autoload": {
-        "psr-0": { "projectmeta\\Stingray": "src/" }
+    "autoload": {
+        "psr-4": {
+            "Rwillians\\Stingray\\": "src/"
+        }
     },
     "require-dev": {
-        "symfony/validator": "*",
+        "symfony/validator": "2.5.*",
         "behat/behat": "2.4.*@stable"
-    }
+    },
+    "minimum-stability": "stable"
 }
