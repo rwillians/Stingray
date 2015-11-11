@@ -1,11 +1,9 @@
-Stingray
-=======
+# Stingray [![Code Climate](https://codeclimate.com/github/rwillians/stingray/badges/gpa.svg)](https://codeclimate.com/github/rwillians/stingray) [![Test Coverage](https://codeclimate.com/github/rwillians/stingray/badges/coverage.svg)](https://codeclimate.com/github/rwillians/stingray/coverage) 
 
 Dot notation reader/writer for multidimensional arrays in PHP.
 
 
-Installing via Composer
------------------------
+## Installing via Composer
 
 Add Stingray to your project:
 
@@ -30,8 +28,7 @@ $>  composer.phar update
 ```
 
 
-Example Usage
------------------------
+## Example Usage
 
 To get any node from an array:
 
