@@ -29,8 +29,7 @@
         "php": ">=5.3.3"
     },
     "require-dev": {
-        "symfony/validator": "^2.7",
-        "behat/behat": "^2.5"
+        "phpunit/phpunit": "^4.0"
     },
     "minimum-stability": "stable"
 }
