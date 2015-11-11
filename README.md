@@ -50,8 +50,6 @@ echo Stingray::get($someArray, 'client.name'); // Outputs: 'John Doe'
 // Changing a value using dot notation:
 Stingray::set($someArray, 'client.name', 'Jane Doe');
 
-/*
- * Create a new key-value to an existent array using dot notation:
- */
+// Create a new key-value to an existent array using dot notation:
 Stingray::set($someArray, 'client.address', 'Some Street, 123');
 ```
