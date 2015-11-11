@@ -18,7 +18,7 @@ or directly to composer.json:
 ```json
 {
     "require": {
-        "rwillians/stingray": "^1.0"
+        "rwillians/stingray": "^2.0"
     }
 }
 ```
