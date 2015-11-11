@@ -18,9 +18,11 @@ class StingrayTest extends PHPUnit_Framework_TestCase
             ]
         ];
 
-        $this->assertEquals('value_1', Stingray::get($array, 'test_1'));
-        $this->assertEquals('value_2', Stingray::get($array, 'test_2.test_2_1'));
-        $this->assertEquals(null, Stingray::get($array, 'non.existent.path'));
+        $stingray = new Stingray();
+
+        $this->assertEquals('value_1', $stingray::get($array, 'test_1'));
+        $this->assertEquals('value_2', $stingray::get($array, 'test_2.test_2_1'));
+        $this->assertEquals(null, $stingray::get($array, 'non.existent.path'));
     }
 
     public function testItCanSetAnValue()
@@ -34,13 +36,15 @@ class StingrayTest extends PHPUnit_Framework_TestCase
             ]
         ];
 
-        Stingray::set($array, 'test_2.test_2_1', true);
-        Stingray::set($array, 'bar', 'foo');
-        Stingray::set($array, 'foobar.foo.bar', 'foobar');
+        $stingray = new Stingray();
 
-        $this->assertEquals('value_1', Stingray::get($array, 'test_1.test_1_1'));
-        $this->assertEquals(true, Stingray::get($array, 'test_2.test_2_1'));
-        $this->assertEquals('foo', Stingray::get($array, 'bar'));
-        $this->assertEquals('foobar', Stingray::get($array, 'foobar.foo.bar'));
+        $stingray::set($array, 'test_2.test_2_1', true);
+        $stingray::set($array, 'bar', 'foo');
+        $stingray::set($array, 'foobar.foo.bar', 'foobar');
+
+        $this->assertEquals('value_1', $stingray::get($array, 'test_1.test_1_1'));
+        $this->assertEquals(true, $stingray::get($array, 'test_2.test_2_1'));
+        $this->assertEquals('foo', $stingray::get($array, 'bar'));
+        $this->assertEquals('foobar', $stingray::get($array, 'foobar.foo.bar'));
     }
 }
