@@ -25,7 +25,13 @@ class Stingray
     public static function get(&$data, $path)
     {
         $paths = explode('.', $path);
-        $node  = &$data;
+
+        if (!is_object($data)) {
+            $node = &$data;
+        } else {
+            $node = $data;
+        }
+
         $isArrayLike = self::isArrayLike($data);
 
         foreach ($paths as $nextPath) {
@@ -33,10 +39,13 @@ class Stingray
                 return null;
             }
 
-            $node = &$node[$nextPath];
+            if(!is_object($node)){
+                $node = &$node[$nextPath];
+            }else{
+                $node = $node[$nextPath];
+            }
             $isArrayLike = self::isArrayLike($node);
         }
-
         return $node;
     }
 
@@ -44,10 +53,10 @@ class Stingray
      * Check value is array like
      * This can be an array or object witch implements ArrayAccess interface
      *
-     * @param $data
+     * @param &$data
      * @return bool
      */
-    public static function isArrayLike($data){
+    public static function isArrayLike(&$data){
         return (is_array($data) || $data instanceof ArrayAccess );
     }
 
