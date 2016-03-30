@@ -2,6 +2,8 @@
 
 namespace Rwillians\Stingray;
 
+use ArrayAccess;
+
 
 /**
  * Class Stingray.
@@ -24,16 +26,29 @@ class Stingray
     {
         $paths = explode('.', $path);
         $node  = &$data;
+        $isArrayLike = self::isArrayLike($data);
 
         foreach ($paths as $nextPath) {
-            if (!array_key_exists($nextPath, $node)) {
+            if (!$isArrayLike || !array_key_exists($nextPath, $node)) {
                 return null;
             }
 
             $node = &$node[$nextPath];
+            $isArrayLike = self::isArrayLike($node);
         }
 
         return $node;
+    }
+
+    /**
+     * Check value is array like
+     * This can be an array or object witch implements ArrayAccess interface
+     *
+     * @param $data
+     * @return bool
+     */
+    public static function isArrayLike($data){
+        return (is_array($data) || $data instanceof ArrayAccess );
     }
 
     /**
