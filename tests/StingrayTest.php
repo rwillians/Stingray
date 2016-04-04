@@ -22,7 +22,8 @@ class StingrayTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('value_1', $stingray::get($array, 'test_1'));
         $this->assertEquals('value_2', $stingray::get($array, 'test_2.test_2_1'));
-        $this->assertEquals(null, $stingray::get($array, 'non.existent.path'));
+        $this->assertNull($stingray::get($array, 'non.existent.path'));
+        $this->assertNull($stingray::get($array, 'test_2.test_2_1.non-existent'));
     }
 
     public function testItCanSetAnValue()
@@ -43,7 +44,7 @@ class StingrayTest extends PHPUnit_Framework_TestCase
         $stingray::set($array, 'foobar.foo.bar', 'foobar');
 
         $this->assertEquals('value_1', $stingray::get($array, 'test_1.test_1_1'));
-        $this->assertEquals(true, $stingray::get($array, 'test_2.test_2_1'));
+        $this->assertTrue($stingray::get($array, 'test_2.test_2_1'));
         $this->assertEquals('foo', $stingray::get($array, 'bar'));
         $this->assertEquals('foobar', $stingray::get($array, 'foobar.foo.bar'));
     }

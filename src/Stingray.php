@@ -26,7 +26,7 @@ class Stingray
         $node  = &$data;
 
         foreach ($paths as $nextPath) {
-            if (!array_key_exists($nextPath, $node)) {
+            if (!static::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
                 return null;
             }
 
@@ -64,5 +64,14 @@ class Stingray
         }
 
         $node = $value;
+    }
+
+    /**
+     * @param mixed $object
+     * @return bool
+     */
+    protected static function isArrayLike($object)
+    {
+        return is_array($object) || $object instanceof \ArrayAccess;
     }
 }
