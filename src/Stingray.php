@@ -27,10 +27,10 @@ class Stingray
         $node = &$data;
 
         foreach ($paths as $idx => $nextPath) {
-            if (!self::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
+            if (!static::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
                 return null;
             }
-            if (self::isArrayLike($node[$nextPath])) {
+            if (static::isArrayLike($node[$nextPath])) {
                 $node = &$node[$nextPath];
                 continue;
             }
@@ -52,7 +52,7 @@ class Stingray
      * @param $data
      * @return bool
      */
-    public static function isArrayLike($data){
+    protected static function isArrayLike($data){
         return is_array($data) || $data instanceof \ArrayAccess ;
     }
 
