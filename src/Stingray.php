@@ -15,33 +15,22 @@ class Stingray
     /**
      * Get's the value from an array using dot notation.
      *
-     * @param array  &$data Multidimensional array being searched
+     * @param array $data Multidimensional array being searched
      * @param string $path Dot notation string path to be searched within the multidimensional array.
      *
      * @return mixed Returns null in the the requested path couldn't be found.
      */
-    public static function get(&$data, $path)
+    public static function get($data, $path)
     {
         $paths = explode('.', $path);
-        $length = count($paths) - 1;
-        $node = &$data;
+        $node = $data;
 
         foreach ($paths as $idx => $nextPath) {
             if (!static::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
                 return null;
             }
-            if (static::isArrayLike($node[$nextPath])) {
-                $node = &$node[$nextPath];
-                continue;
-            }
-            if ($idx < $length) {
-                return null;
-            }
-            if ($idx === $length) {
-                return $node[$nextPath];
-            }
+            $node = $node[$nextPath];
         }
-
         return $node;
     }
 
@@ -52,25 +41,26 @@ class Stingray
      * @param $data
      * @return bool
      */
-    protected static function isArrayLike($data){
-        return is_array($data) || $data instanceof \ArrayAccess ;
+    protected static function isArrayLike($data)
+    {
+        return is_array($data) || $data instanceof \ArrayAccess;
     }
 
     /**
      * Set's a value to an array node using dot notation.
      *
-     * @param array  &$data Array being searched.
+     * @param array &$data Array being searched.
      * @param string $path Path used to search array.
-     * @param mixed  $value Value to set array node.
+     * @param mixed $value Value to set array node.
      *
      * @return bool
      */
     public static function set(&$data, $path, $value)
     {
-        $paths            = explode('.', $path);
-        $pathCount        = count($paths);
+        $paths = explode('.', $path);
+        $pathCount = count($paths);
         $currentIteration = 0;
-        $node             = &$data;
+        $node = &$data;
 
         foreach ($paths as $nextPath) {
             if (array_key_exists($nextPath, $node)) {
@@ -78,7 +68,7 @@ class Stingray
                 $currentIteration++;
             } elseif ($currentIteration < $pathCount) {
                 $node[$nextPath] = [];
-                $node            = &$node[$nextPath];
+                $node = &$node[$nextPath];
                 $currentIteration++;
             }
         }
