@@ -20,17 +20,17 @@ class Stingray
      *
      * @return mixed Returns null in the the requested path couldn't be found.
      */
-    public static function get(&$data, $path)
+    public static function get($data, $path)
     {
         $paths = explode('.', $path);
-        $node  = &$data;
+        $node  = $data;
 
         foreach ($paths as $nextPath) {
             if (!static::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
                 return null;
             }
 
-            $node = &$node[$nextPath];
+            $node = $node[$nextPath];
         }
 
         return $node;
