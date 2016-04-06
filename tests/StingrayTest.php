@@ -42,11 +42,13 @@ class StingrayTest extends PHPUnit_Framework_TestCase
 
     public function data()
     {
-        return [[[
+        $array = [
             'test_1' => 'value_1',
             'test_2' => [
                 'test_2_1' => 'value_2',
             ]
-        ]]];
+        ];
+
+        return [[$array, new ArrayObject($array)]];
     }
 }
