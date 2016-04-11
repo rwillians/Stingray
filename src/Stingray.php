@@ -9,6 +9,7 @@ namespace Rwillians\Stingray;
  *
  * @author Matthew Ratzke <matthew.003@me.com>
  * @author Rafael Willians <me@rwillians.com>
+ * @author Ivan Pyankov <unit.1985@gmail.com>
  */
 class Stingray
 {
@@ -20,17 +21,17 @@ class Stingray
      *
      * @return mixed Returns null in the the requested path couldn't be found.
      */
-    public static function get(&$data, $path)
+    public static function get($data, $path)
     {
         $paths = explode('.', $path);
-        $node  = &$data;
+        $node  = $data;
 
         foreach ($paths as $nextPath) {
-            if (!array_key_exists($nextPath, $node)) {
+            if (!static::isArrayLike($node) || !array_key_exists($nextPath, $node)) {
                 return null;
             }
 
-            $node = &$node[$nextPath];
+            $node = $node[$nextPath];
         }
 
         return $node;
@@ -64,5 +65,14 @@ class Stingray
         }
 
         $node = $value;
+    }
+
+    /**
+     * @param mixed $object
+     * @return bool
+     */
+    protected static function isArrayLike($object)
+    {
+        return is_array($object) || $object instanceof \ArrayAccess;
     }
 }

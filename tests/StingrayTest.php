@@ -9,42 +9,46 @@ use Rwillians\Stingray\Stingray;
  */
 class StingrayTest extends PHPUnit_Framework_TestCase
 {
-    public function testItCanGetValues()
+    /**
+     * @dataProvider data
+     * @param array $array
+     */
+    public function testItCanGetValues(array $array)
     {
-        $array = [
-            'test_1' => 'value_1',
-            'test_2' => [
-                'test_2_1' => 'value_2'
-            ]
-        ];
-
         $stingray = new Stingray();
 
         $this->assertEquals('value_1', $stingray::get($array, 'test_1'));
         $this->assertEquals('value_2', $stingray::get($array, 'test_2.test_2_1'));
-        $this->assertEquals(null, $stingray::get($array, 'non.existent.path'));
+        $this->assertNull($stingray::get($array, 'non.existent.path'));
+        $this->assertNull($stingray::get($array, 'test_2.test_2_1.non-existent'));
     }
 
-    public function testItCanSetAnValue()
+    /**
+     * @dataProvider data
+     * @param array $array
+     */
+    public function testItCanSetAnValue(array $array)
     {
-        $array = [
-            'test_1' => [
-                'test_1_1' => 'value_1'
-            ],
-            'test_2' => [
-                'test_2_1' => false
-            ]
-        ];
-
         $stingray = new Stingray();
 
         $stingray::set($array, 'test_2.test_2_1', true);
         $stingray::set($array, 'bar', 'foo');
         $stingray::set($array, 'foobar.foo.bar', 'foobar');
 
-        $this->assertEquals('value_1', $stingray::get($array, 'test_1.test_1_1'));
-        $this->assertEquals(true, $stingray::get($array, 'test_2.test_2_1'));
+        $this->assertTrue($stingray::get($array, 'test_2.test_2_1'));
         $this->assertEquals('foo', $stingray::get($array, 'bar'));
         $this->assertEquals('foobar', $stingray::get($array, 'foobar.foo.bar'));
+    }
+
+    public function data()
+    {
+        $array = [
+            'test_1' => 'value_1',
+            'test_2' => [
+                'test_2_1' => 'value_2',
+            ]
+        ];
+
+        return [[$array, new ArrayObject($array)]];
     }
 }
