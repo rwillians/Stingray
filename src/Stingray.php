@@ -9,6 +9,7 @@ namespace Rwillians\Stingray;
  *
  * @author Matthew Ratzke <matthew.003@me.com>
  * @author Rafael Willians <me@rwillians.com>
+ * @author Ivan Pyankov <unit.1985@gmail.com>
  */
 class Stingray
 {
